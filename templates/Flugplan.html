@@ -1,0 +1,71 @@
+        <body>
+    <style>
+    body {
+      background-color: #001F3F; /* Dunkelblau */
+      color: #FFFFFF; /* Weiß */
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th, td {
+      border: 0px solid #FFFFFF; /* Weiß */
+      padding: 10px;
+      text-align: left;
+    }
+
+    th {
+      cursor: pointer;
+      background-color: #104E8B; /* DodgerBlue4 für den Tabellenkopf */
+    }
+
+    th:hover {
+      background-color: #00bfff; /* DeepSkyBlue */
+    }
+
+    tr:nth-child(even) {
+      background-color: #1c86ee; /* DodgerBlue2 */
+    }
+
+    tr:hover {
+      background-color: #00bfff; /* DeepSkyBlue */
+    }
+  </style>
+        <h1>Abflüge</h1>
+      
+        <table>
+          <thead>
+            <tr>
+              <th >Flugnummer</th>
+              <th >Ziel</th>
+              <th >Abflugzeit</th>
+              <th >Ankuftzeit</th>
+              <th >Fluggesellschaft</th>
+              <th >Gate</th>
+              <th >Status</th>
+            </tr>
+          </thead>
+          <tbody>    
+              {% for plane_model, flight_data in data.items() %}
+              <tr>
+                  <td>{{ plane_model }}</td>
+                  <td>{{ flight_data['flugdaten']['ziel'] }}</td>
+                  <td>{{ flight_data['flugdaten']['abflugzeit'].strftime("%H:%M") }}</td>
+                  <td>{{ flight_data['flugdaten']['ankunftzeit'].strftime("%H:%M") }}</td>
+                  <td>{{ flight_data['flugdaten']['fluggesellschaft'] }}</td>
+                  <td>{{ flight_data['flugdaten']['gate'] }}</td>
+                  <td>{{ flight_data['flugdaten']['status'] }}</td>
+              </tr>
+              {% endfor %}
+          </tbody>
+
+        </table>
+      </body>
+      </html>
+      

@@ -1,0 +1,166 @@
+{
+    "fluggesellschaften": [
+        {
+            "kennung": "AJT",
+            "name": "AirJet"
+        },
+        {
+            "kennung": "SWC",
+            "name": "SkyWings"
+        },
+        {
+            "kennung": "AEX",
+            "name": "AeroExpress"
+        },
+        {
+            "kennung": "SAI",
+            "name": "SwiftAir"
+        },
+        {
+            "kennung": "SFL",
+            "name": "StarFly"
+        },
+        {
+            "kennung": "CJT",
+            "name": "CloudJet"
+        },
+        {
+            "kennung": "BSA",
+            "name": "BlueSky Airlines"
+        },
+        {
+            "kennung": "GLK",
+            "name": "GlobalLink"
+        },
+        {
+            "kennung": "SPB",
+            "name": "SpeedBird"
+        },
+        {
+            "kennung": "SRA",
+            "name": "Sunrise Airways"
+        },
+        {
+            "kennung": "EAG",
+            "name": "EagleAir"
+        },
+        {
+            "kennung": "HRW",
+            "name": "Horizon Wings"
+        },
+        {
+            "kennung": "JST",
+            "name": "JetStream"
+        },
+        {
+            "kennung": "PHA",
+            "name": "Phoenix Airlines"
+        },
+        {
+            "kennung": "SSY",
+            "name": "SilverSky"
+        },
+        {
+            "kennung": "ALN",
+            "name": "AirLink"
+        },
+        {
+            "kennung": "RBA",
+            "name": "RainbowAir"
+        },
+        {
+            "kennung": "AEX",
+            "name": "AirExpress"
+        },
+        {
+            "kennung": "WWI",
+            "name": "WindyWings"
+        },
+        {
+            "kennung": "PAC",
+            "name": "PacificAir"
+        }
+    ],
+    "flugziele": [
+        {
+            "abkuerzung": "NYC",
+            "ziel": "New York"
+        },
+        {
+            "abkuerzung": "TKO",
+            "ziel": "Tokyo"
+        },
+        {
+            "abkuerzung": "LDN",
+            "ziel": "London"
+        },
+        {
+            "abkuerzung": "PRS",
+            "ziel": "Paris"
+        },
+        {
+            "abkuerzung": "BLN",
+            "ziel": "Berlin"
+        },
+        {
+            "abkuerzung": "SYD",
+            "ziel": "Sydney"
+        },
+        {
+            "abkuerzung": "ROM",
+            "ziel": "Rome"
+        },
+        {
+            "abkuerzung": "CAI",
+            "ziel": "Cairo"
+        },
+        {
+            "abkuerzung": "RIO",
+            "ziel": "Rio de Janeiro"
+        },
+        {
+            "abkuerzung": "CPT",
+            "ziel": "Cape Town"
+        },
+        {
+            "abkuerzung": "DXB",
+            "ziel": "Dubai"
+        },
+        {
+            "abkuerzung": "TOR",
+            "ziel": "Toronto"
+        },
+        {
+            "abkuerzung": "SGP",
+            "ziel": "Singapore"
+        },
+        {
+            "abkuerzung": "SEL",
+            "ziel": "Seoul"
+        },
+        {
+            "abkuerzung": "MOW",
+            "ziel": "Moscow"
+        },
+        {
+            "abkuerzung": "BOM",
+            "ziel": "Mumbai"
+        },
+        {
+            "abkuerzung": "LAX",
+            "ziel": "Los Angeles"
+        },
+        {
+            "abkuerzung": "MEX",
+            "ziel": "Mexico City"
+        },
+        {
+            "abkuerzung": "AMS",
+            "ziel": "Amsterdam"
+        },
+        {
+            "abkuerzung": "HKG",
+            "ziel": "Hong Kong"
+        }
+    ]
+}

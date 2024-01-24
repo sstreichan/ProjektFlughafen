@@ -1,0 +1,317 @@
+{
+  "Boeing 737-100": {
+    "leerGewicht": 41145,
+    "maximalGewicht": 77565,
+    "passagiere": 85,
+    "speed": 988,
+    "tank": 20370,
+    "reichweite": 2500,
+    "maxFlughoehe": 11278,
+    "Flugdaten": {
+      "flugnummer": "JC676",
+      "abflugzeit": "2024-01-12T12:00:47.174188",
+      "ankunftzeit": "2024-01-13T00:00:47.174188",
+      "fluggesellschaft": "StarWings"
+    }
+  },
+  "Boeing 737-200": {
+    "leerGewicht": 42080,
+    "maximalGewicht": 84000,
+    "passagiere": 115,
+    "speed": 988,
+    "tank": 20370,
+    "reichweite": 2800,
+    "maxFlughoehe": 11278,
+    "Flugdaten": {
+      "flugnummer": "IP757",
+      "abflugzeit": "2024-01-11T07:00:47.174188",
+      "ankunftzeit": "2024-01-11T13:00:47.174188",
+      "fluggesellschaft": "AirExample"
+    }
+  },
+  "Boeing 737-300": {
+    "leerGewicht": 45230,
+    "maximalGewicht": 82080,
+    "passagiere": 149,
+    "speed": 983,
+    "tank": 19150,
+    "reichweite": 4200,
+    "maxFlughoehe": 11278,
+    "Flugdaten": {
+      "flugnummer": "XJ739",
+      "abflugzeit": "2024-01-11T12:00:47.174188",
+      "ankunftzeit": "2024-01-11T19:00:47.174188",
+      "fluggesellschaft": "StarWings"
+    }
+  },
+  "Boeing 737-400": {
+    "leerGewicht": 49800,
+    "maximalGewicht": 82080,
+    "passagiere": 168,
+    "speed": 977,
+    "tank": 19150,
+    "reichweite": 3800,
+    "maxFlughoehe": 11278,
+    "Flugdaten": {
+      "flugnummer": "CI955",
+      "abflugzeit": "2024-01-11T19:00:47.174188",
+      "ankunftzeit": "2024-01-12T05:00:47.174188",
+      "fluggesellschaft": "StarWings"
+    }
+  },
+  "Boeing 737-500": {
+    "leerGewicht": 56400,
+    "maximalGewicht": 68000,
+    "passagiere": 132,
+    "speed": 982,
+    "tank": 18490,
+    "reichweite": 4500,
+    "maxFlughoehe": 11278,
+    "Flugdaten": {
+      "flugnummer": "ZQ577",
+      "abflugzeit": "2024-01-10T17:00:47.174188",
+      "ankunftzeit": "2024-01-10T18:00:47.174188",
+      "fluggesellschaft": "StarWings"
+    }
+  },
+  "Boeing 737-600": {
+    "leerGewicht": 60830,
+    "maximalGewicht": 68000,
+    "passagiere": 132,
+    "speed": 950,
+    "tank": 20940,
+    "reichweite": 5300,
+    "maxFlughoehe": 12496,
+    "Flugdaten": {
+      "flugnummer": "FL891",
+      "abflugzeit": "2024-01-11T12:00:47.174188",
+      "ankunftzeit": "2024-01-11T21:00:47.174188",
+      "fluggesellschaft": "StarWings"
+    }
+  },
+  "Boeing 737-700": {
+    "leerGewicht": 62820,
+    "maximalGewicht": 85100,
+    "passagiere": 149,
+    "speed": 914,
+    "tank": 26020,
+    "reichweite": 6050,
+    "maxFlughoehe": 12496,
+    "Flugdaten": {
+      "flugnummer": "ZG283",
+      "abflugzeit": "2024-01-12T06:00:47.174188",
+      "ankunftzeit": "2024-01-12T18:00:47.174188",
+      "fluggesellschaft": "SkyJet"
+    }
+  },
+  "Boeing 737-800": {
+    "leerGewicht": 70440,
+    "maximalGewicht": 79015,
+    "passagiere": 189,
+    "speed": 839,
+    "tank": 26020,
+    "reichweite": 5450,
+    "maxFlughoehe": 12496,
+    "Flugdaten": {
+      "flugnummer": "XW120",
+      "abflugzeit": "2024-01-12T11:00:47.174188",
+      "ankunftzeit": "2024-01-12T17:00:47.174188",
+      "fluggesellschaft": "StarWings"
+    }
+  },
+  "Boeing 737-900": {
+    "leerGewicht": 70430,
+    "maximalGewicht": 88265,
+    "passagiere": 213,
+    "speed": 839,
+    "tank": 26020,
+    "reichweite": 5300,
+    "maxFlughoehe": 12496,
+    "Flugdaten": {
+      "flugnummer": "CB473",
+      "abflugzeit": "2024-01-11T15:00:47.174188",
+      "ankunftzeit": "2024-01-12T03:00:47.174188",
+      "fluggesellschaft": "SkyJet"
+    }
+  },
+  "Boeing 737 MAX": {
+    "leerGewicht": 72500,
+    "maximalGewicht": 88300,
+    "passagiere": 230,
+    "speed": 839,
+    "tank": 28820,
+    "reichweite": 6510,
+    "maxFlughoehe": 12496,
+    "Flugdaten": {
+      "flugnummer": "RK112",
+      "abflugzeit": "2024-01-11T14:00:47.174188",
+      "ankunftzeit": "2024-01-11T20:00:47.174188",
+      "fluggesellschaft": "StarWings"
+    }
+  },
+  "Boeing 747-100": {
+    "leerGewicht": 162400,
+    "maximalGewicht": 378840,
+    "passagiere": 660,
+    "speed": 933,
+    "tank": 183380,
+    "reichweite": 5600,
+    "maxFlughoehe": 13106,
+    "Flugdaten": {
+      "flugnummer": "SB606",
+      "abflugzeit": "2024-01-10T23:00:47.174188",
+      "ankunftzeit": "2024-01-11T04:00:47.174188",
+      "fluggesellschaft": "SkyJet"
+    }
+  },
+  "Boeing 747-200": {
+    "leerGewicht": 168380,
+    "maximalGewicht": 833000,
+    "passagiere": 524,
+    "speed": 988,
+    "tank": 200320,
+    "reichweite": 7300,
+    "maxFlughoehe": 13106,
+    "Flugdaten": {
+      "flugnummer": "UG581",
+      "abflugzeit": "2024-01-11T22:00:47.174188",
+      "ankunftzeit": "2024-01-12T10:00:47.174188",
+      "fluggesellschaft": "AirExample"
+    }
+  },
+  "Boeing 747-300": {
+    "leerGewicht": 178756,
+    "maximalGewicht": 833000,
+    "passagiere": 660,
+    "speed": 988,
+    "tank": 183380,
+    "reichweite": 7200,
+    "maxFlughoehe": 13106,
+    "Flugdaten": {
+      "flugnummer": "WK666",
+      "abflugzeit": "2024-01-12T08:00:47.174188",
+      "ankunftzeit": "2024-01-12T14:00:47.174188",
+      "fluggesellschaft": "GlobalFly"
+    }
+  },
+  "Boeing 747-400": {
+    "leerGewicht": 178756,
+    "maximalGewicht": 987000,
+    "passagiere": 624,
+    "speed": 988,
+    "tank": 216840,
+    "reichweite": 7700,
+    "maxFlughoehe": 13106,
+    "Flugdaten": {
+      "flugnummer": "LS663",
+      "abflugzeit": "2024-01-12T12:00:47.174188",
+      "ankunftzeit": "2024-01-12T13:00:47.174188",
+      "fluggesellschaft": "AirExample"
+    }
+  },
+  "Boeing 767-200": {
+    "leerGewicht": 90001,
+    "maximalGewicht": 179170,
+    "passagiere": 181,
+    "speed": 870,
+    "tank": 91200,
+    "reichweite": 6030,
+    "maxFlughoehe": 13130,
+    "Flugdaten": {
+      "flugnummer": "IK324",
+      "abflugzeit": "2024-01-10T19:00:47.174188",
+      "ankunftzeit": "2024-01-10T20:00:47.174188",
+      "fluggesellschaft": "SkyJet"
+    }
+  },
+  "Boeing 767-300": {
+    "leerGewicht": 91636,
+    "maximalGewicht": 181610,
+    "passagiere": 218,
+    "speed": 870,
+    "tank": 91200,
+    "reichweite": 6100,
+    "maxFlughoehe": 13130,
+    "Flugdaten": {
+      "flugnummer": "ZN705",
+      "abflugzeit": "2024-01-11T06:00:47.174188",
+      "ankunftzeit": "2024-01-11T07:00:47.174188",
+      "fluggesellschaft": "GlobalFly"
+    }
+  },
+  "Boeing 767-400": {
+    "leerGewicht": 91999,
+    "maximalGewicht": 187700,
+    "passagiere": 245,
+    "speed": 870,
+    "tank": 91200,
+    "reichweite": 5150,
+    "maxFlughoehe": 13130,
+    "Flugdaten": {
+      "flugnummer": "PJ616",
+      "abflugzeit": "2024-01-11T12:00:47.174188",
+      "ankunftzeit": "2024-01-11T22:00:47.174188",
+      "fluggesellschaft": "AirExample"
+    }
+  },
+  "Boeing 777-200": {
+    "leerGewicht": 132200,
+    "maximalGewicht": 263610,
+    "passagiere": 317,
+    "speed": 950,
+    "tank": 171170,
+    "reichweite": 14260,
+    "maxFlughoehe": 13115,
+    "Flugdaten": {
+      "flugnummer": "LD247",
+      "abflugzeit": "2024-01-11T05:00:47.174188",
+      "ankunftzeit": "2024-01-11T12:00:47.174188",
+      "fluggesellschaft": "SkyJet"
+    }
+  },
+  "Boeing 777-300": {
+    "leerGewicht": 166930,
+    "maximalGewicht": 347810,
+    "passagiere": 396,
+    "speed": 950,
+    "tank": 171170,
+    "reichweite": 11165,
+    "maxFlughoehe": 13115,
+    "Flugdaten": {
+      "flugnummer": "KH623",
+      "abflugzeit": "2024-01-12T00:00:47.174188",
+      "ankunftzeit": "2024-01-12T09:00:47.174188",
+      "fluggesellschaft": "SkyJet"
+    }
+  },
+  "Boeing 787-8": {
+    "leerGewicht": 119500,
+    "maximalGewicht": 227930,
+    "passagiere": 242,
+    "speed": 954,
+    "tank": 138699,
+    "reichweite": 13620,
+    "maxFlughoehe": 13530,
+    "Flugdaten": {
+      "flugnummer": "CB582",
+      "abflugzeit": "2024-01-10T21:00:47.174188",
+      "ankunftzeit": "2024-01-11T07:00:47.174188",
+      "fluggesellschaft": "StarWings"
+    }
+  },
+  "Boeing 787-9": {
+    "leerGewicht": 127900,
+    "maximalGewicht": 254011,
+    "passagiere": 290,
+    "speed": 954,
+    "tank": 138699,
+    "reichweite": 13530,
+    "maxFlughoehe": 13530,
+    "Flugdaten": {
+      "flugnummer": "SW166",
+      "abflugzeit": "2024-01-10T18:00:47.174188",
+      "ankunftzeit": "2024-01-10T21:00:47.174188",
+      "fluggesellschaft": "StarWings"
+    }
+  }
+}

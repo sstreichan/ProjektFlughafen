@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abflug / Depatures</title>
+</head>
+<body>
+    <h1>Flugdaten</h1>
+<table border="1">
+    <tr>
+        <th>Flugnummer</th>
+        <th>Abflugzeit</th>
+        <th>Ankunftzeit</th>
+        <th>Fluggesellschaft</th>
+    </tr>
+    {% for plane_model, flight_data in data.items() %}
+        <tr>
+            <td>{{ flight_data['flugdaten']['flugnummer'] }}</td>
+            <td>{{ flight_data['flugdaten']['abflugzeit'].strftime("%H:%M") }}</td>
+            <td>{{ flight_data['flugdaten']['ankunftzeit'].strftime("%H:%M") }}</td>
+            <td>{{ flight_data['flugdaten']['fluggesellschaft'] }}</td>
+        </tr>
+        {% endfor %}
+</table>
+
+</body>
+</html>
