@@ -1,5 +1,6 @@
 import sqlite3
 import util
+import datetime
 
 dbFile = f"{util.get_data_folder()}terminal.db"
 def show_all():
@@ -104,33 +105,33 @@ def add_ziel(name,code):
      conn.close()
 
 
-def set_Ankuftzeit(datetime zeit):
+def set_Ankuftzeit(zeit:datetime)->bool:
      pass
 
-def set_Abflugzeit(datetime zeit):
+def set_Abflugzeit(zeit:datetime)->bool:
      pass
      
-def set_gate(string gate):
+def set_gate(gate:str)->bool:
      pass
 
-def set_status(string status):
+def set_status(status:str)->bool:
      pass
 
-def set_all(datetime zeit, datetime zeit, string gate, string status):
-     # Alle werte einmal setzen
-     pass     
+def set_all(ankuftzeit: datetime, abflugzeit: datetime, gate: str, status: str)->bool:
+    # Alle werte einmal setzen
+    pass
 
-def get_Ankuftzeit():
+def get_Ankuftzeit()->datetime:
      pass
 
-def get_Abflugzeit():
+def get_Abflugzeit()->datetime:
      pass
      
-def get_gate():
+def get_gate()->str:
      pass
 
-def get_status():
+def get_status()->str:
      pass
 
-def get_All():
+def get_All()->tuple:
      pass
