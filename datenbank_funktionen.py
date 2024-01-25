@@ -104,22 +104,21 @@ def add_ziel(name,code):
      conn.close()
 
 
-def set_Ankuftzeit():
+def set_Ankuftzeit(datetime zeit):
      pass
 
-def set_Abflugzeit():
+def set_Abflugzeit(datetime zeit):
      pass
      
-def set_gate():
+def set_gate(string gate):
      pass
 
-def set_status():
+def set_status(string status):
      pass
 
-def set_all():
+def set_all(datetime zeit, datetime zeit, string gate, string status):
      # Alle werte einmal setzen
-     pass
-     
+     pass     
 
 def get_Ankuftzeit():
      pass
