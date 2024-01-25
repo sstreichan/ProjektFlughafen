@@ -31,6 +31,19 @@ def show_all():
      conn.commit()
      conn.close()
 
+def show_all2():
+    tables = ["flugzeuge", "anbieter", "ziele"]
+    with sqlite3.connect('terminal.db') as conn:
+        cur = conn.cursor()
+        for table in tables:
+            print(table.capitalize())
+            cur.execute(f"SELECT rowid, * FROM {table}")
+            items = cur.fetchall()
+            for item in items:
+                print(item)
+        conn.commit()
+        
+
 def show_flugzeuge():
      conn = sqlite3.connect('terminal.db')
      cur = conn.cursor()      
