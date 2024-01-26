@@ -1,5 +1,8 @@
 name: Anwendung mit Nuitka packen
 
+on:
+  push:
+  
 jobs:
   build:
     strategy:
