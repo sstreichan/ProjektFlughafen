@@ -133,5 +133,5 @@ def get_gate()->str:
 def get_status()->str:
      pass
 
-def get_All()->tuple:
-     pass
+def get_all()->tuple:
+     return (get_Ankuftzeit(), get_Abflugzeit(),get_gate(),get_status())
