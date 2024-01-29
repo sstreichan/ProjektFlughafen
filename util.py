@@ -82,3 +82,20 @@ def get_rnd_Status():
     """
     status = [["Normal", 0.5], ["Verspätet", 0.2], ["Fällt aus", 0.1]]
     return f"{random.choices([i[0] for i in status], weights = [i[1] for i in status])[0]}"
+
+def get_all():
+    data = {}
+    for _ in range(random.randint(10, 15)):
+        fluggessellschaft, flugnummer = get_rnd_fluggesellschaft()
+        data[f"{flugnummer}"] = {
+            "flugdaten": {
+                "abflugzeit": get_rnd_datetime(),
+                "ankunftzeit": get_rnd_datetime(),
+                "fluggesellschaft": fluggessellschaft,
+                "gate": get_rnd_gate(),
+                "status": get_rnd_Status(),
+                "ziel": get_rnd_ziel(),
+            }
+        }
+    return data
+        

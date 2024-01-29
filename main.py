@@ -96,20 +96,7 @@ def main():
 
     @app.route("/")
     def home():
-        data = {}
-        for _ in range(random.randint(10, 15)):
-            new_flugzeug = Flugzeug()
-            fluggessellschaft, flugnummer = util.get_rnd_fluggesellschaft()
-            data[f"{flugnummer}"] = {
-                "flugdaten": {
-                    "abflugzeit": util.get_rnd_datetime(),
-                    "ankunftzeit": util.get_rnd_datetime(),
-                    "fluggesellschaft": fluggessellschaft,
-                    "gate": util.get_rnd_gate(),
-                    "status": util.get_rnd_Status(),
-                    "ziel": util.get_rnd_ziel(),
-                }
-            }
+        data = util.get_all()
 
         sorted_data = dict(
             sorted(data.items(), key=lambda item: item[1]["flugdaten"]["abflugzeit"])
