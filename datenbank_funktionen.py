@@ -105,33 +105,41 @@ def add_ziel(name,code):
      conn.close()
 
 
-def set_Ankuftzeit(zeit:datetime)->bool:
+def set_Ankuftzeit(row: int, zeit:datetime)->bool:
      pass
 
-def set_Abflugzeit(zeit:datetime)->bool:
+def set_Abflugzeit(row: int, zeit:datetime)->bool:
      pass
      
-def set_gate(gate:str)->bool:
+def set_gate(row: int, gate:str)->bool:
      pass
 
-def set_status(status:str)->bool:
+def set_status(row: int, status:str)->bool:
      pass
 
-def set_all(ankuftzeit: datetime, abflugzeit: datetime, gate: str, status: str)->bool:
-    # Alle werte einmal setzen
-    pass
+def set_all(rows: dict)->bool:     
+     for row in rows:
+          set_Ankuftzeit(row, row["ankuftzeit"])
+          set_Abflugzeit(row, row["abflugzeit"])
+          set_gate(row, row["gate"])
+          set_status(row,row["status"])
+     return True
 
-def get_Ankuftzeit()->datetime:
+def get_Ankuftzeit(row: int)->datetime:
      pass
 
-def get_Abflugzeit()->datetime:
+def get_Abflugzeit(row: int)->datetime:
      pass
      
-def get_gate()->str:
+def get_gate(row: int)->str:
      pass
 
-def get_status()->str:
+def get_status(row: int)->str:
      pass
 
-def get_all()->tuple:
-     return (get_Ankuftzeit(), get_Abflugzeit(),get_gate(),get_status())
+def get_all()->dict:
+     result = {}
+     rows = 0 ##### Todo: die einzahl der rows setzen
+     for row in rows:
+          get_Ankuftzeit(row), get_Abflugzeit(row),get_gate(row),get_status(row)
+     return result
