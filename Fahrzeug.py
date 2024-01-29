@@ -16,7 +16,7 @@ class Fahrzeug(ABC):
         Rückgabe:
             Keine
         """
-        try:           
+        try:
             if _name == "":
                 _name = random.choice(list(self.data.keys()))
 
@@ -35,14 +35,13 @@ class Fahrzeug(ABC):
             self.gewicht = _gewicht
             self.passagiere = 0
 
-
         except KeyError:
             print(f"Fahrzeug {_name} nicht in der Datenbank")
-    
+
     @abstractmethod
     def load_json(name):
-        pass    
-    
+        pass
+
     def __str__(self):
         """
         Gibt eine formatierte Zeichenkette (String) zurück, die Informationen über das Objekt enthält.

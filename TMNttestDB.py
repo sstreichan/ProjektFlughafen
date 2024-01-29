@@ -4,11 +4,11 @@ import sqlite3
 
 #                           Erstelle/Verbinde eine Datenbank(immer nötig)
 # -----------------------------------------------------------------------------------------------
-#mit Dateipfad
+# mit Dateipfad
 # conn = sqlite3.connect('C:\\Localer\\pfad\\zur\\datenbank\\terminal.db')
 
-#ohne dateipfad(nutzt den Pfad des Terminals)
-conn = sqlite3.connect('terminal.db')
+# ohne dateipfad(nutzt den Pfad des Terminals)
+conn = sqlite3.connect("terminal.db")
 
 #                                     Erstelle einen Cursor
 # -----------------------------------------------------------------------------------------------
@@ -66,8 +66,6 @@ cur = conn.cursor()
 # cur.executemany("INSERT INTO flugzeuge VALUES (?,?,?,?)", fLugzeug_liste)
 
 
-
-
 #                           Mehrere einträge erstellen(anbieter)
 # -----------------------------------------------------------------------------------------------
 # anbieter_liste = [
@@ -100,7 +98,6 @@ cur = conn.cursor()
 # cur.executemany("INSERT INTO ziele VALUES (?,?)", ziele_liste)
 
 
-
 #                       Selecte den Table mit id (wähle zwischen diesen)
 # -----------------------------------------------------------------------------------------------
 # cur.execute("Select rowid, * FROM flugzeuge")
@@ -124,7 +121,7 @@ cur = conn.cursor()
 # items = cur.fetchall()
 
 # for item in items:
-#     print(item)  
+#     print(item)
 
 #                                           info print
 # -----------------------------------------------------------------------------------------------
@@ -165,6 +162,5 @@ for item in items:
 # #Absenden
 conn.commit()
 
-#Schließen
+# Schließen
 conn.close()
-

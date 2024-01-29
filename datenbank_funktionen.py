@@ -1,38 +1,50 @@
 import sqlite3
 import util
 import datetime
+import os
+import shutil
 
-dbFile = f"{util.get_data_folder()}terminal.db"
+
+if not os.path.exists(os.path.expanduser(f"~/terminal.db")):
+    shutil.copy(
+        f"{util.get_data_folder()}/terminal.db",
+        f"{os.path.expanduser('~/terminal.db')}",
+    )
+
+dbFile = f"{os.path.expanduser('~/terminal.db')}"
+
+
 def show_all():
-     conn = sqlite3.connect(dbFile)
-     cur = conn.cursor()
+    conn = sqlite3.connect(dbFile)
+    cur = conn.cursor()
 
-     print("Flugzeuge")
+    print("Flugzeuge")
 
-     cur.execute("SELECT rowid, * FROM flugzeuge")
-     items = cur.fetchall()
-     
-     for item in items:
-          print(item)
+    cur.execute("SELECT rowid, * FROM flugzeuge")
+    items = cur.fetchall()
 
-     print("Anbieter")
+    for item in items:
+        print(item)
 
-     cur.execute("SELECT rowid, * FROM anbieter")
-     items = cur.fetchall()
-     
-     for item in items:
-          print(item)
+    print("Anbieter")
 
-     print("Ziele")
+    cur.execute("SELECT rowid, * FROM anbieter")
+    items = cur.fetchall()
 
-     cur.execute("SELECT rowid, * FROM ziele")
-     items = cur.fetchall()
-     
-     for item in items:
-          print(item)
+    for item in items:
+        print(item)
 
-     conn.commit()
-     conn.close()
+    print("Ziele")
+
+    cur.execute("SELECT rowid, * FROM ziele")
+    items = cur.fetchall()
+
+    for item in items:
+        print(item)
+
+    conn.commit()
+    conn.close()
+
 
 def show_all2():
     tables = ["flugzeuge", "anbieter", "ziele"]
@@ -45,101 +57,115 @@ def show_all2():
             for item in items:
                 print(item)
         conn.commit()
-        
+
 
 def show_flugzeuge():
-     conn = sqlite3.connect(dbFile)
-     cur = conn.cursor()      
-     cur.execute("SELECT rowid, * FROM flugzeuge")
-     items = cur.fetchall()
+    conn = sqlite3.connect(dbFile)
+    cur = conn.cursor()
+    cur.execute("SELECT rowid, * FROM flugzeuge")
+    items = cur.fetchall()
 
-     for item in items:
-          print(item)
+    for item in items:
+        print(item)
 
-     conn.commit()
-     conn.close()
+    conn.commit()
+    conn.close()
+
 
 def show_anbieter():
-     conn = sqlite3.connect(dbFile)
-     cur = conn.cursor()      
-     cur.execute("SELECT rowid, * FROM anbieter")
-     items = cur.fetchall()
+    conn = sqlite3.connect(dbFile)
+    cur = conn.cursor()
+    cur.execute("SELECT rowid, * FROM anbieter")
+    items = cur.fetchall()
 
-     for item in items:
-          print(item)
+    for item in items:
+        print(item)
 
-     conn.commit()
-     conn.close()
+    conn.commit()
+    conn.close()
+
 
 def show_ziele():
-     conn = sqlite3.connect(dbFile)
-     cur = conn.cursor()      
-     cur.execute("SELECT rowid, * FROM ziele")
-     items = cur.fetchall()
+    conn = sqlite3.connect(dbFile)
+    cur = conn.cursor()
+    cur.execute("SELECT rowid, * FROM ziele")
+    items = cur.fetchall()
 
-     for item in items:
-          print(item)
+    for item in items:
+        print(item)
 
-     conn.commit()
-     conn.close()
-
-def add_flugzeug(name,code,leer,max):
-     conn = sqlite3.connect(dbFile)
-     cur = conn.cursor()
-     cur.execute("INSERT INTO flugzeuge VALUES (?,?,?,?)", (name,code,leer,max))
-     conn.commit()
-     conn.close()
-
-def add_anbieter(name,code):
-     conn = sqlite3.connect(dbFile)
-     cur = conn.cursor()
-     cur.execute("INSERT INTO anbieter VALUES (?,?)", (name,code))
-     conn.commit()
-     conn.close()
-
-def add_ziel(name,code):
-     conn = sqlite3.connect(dbFile)
-     cur = conn.cursor()
-     cur.execute("INSERT INTO ziele VALUES (?,?)", (name,code))
-     conn.commit()
-     conn.close()
+    conn.commit()
+    conn.close()
 
 
-def set_Ankuftzeit(row: int, zeit:datetime)->bool:
-     pass
+def add_flugzeug(name, code, leer, max):
+    conn = sqlite3.connect(dbFile)
+    cur = conn.cursor()
+    cur.execute("INSERT INTO flugzeuge VALUES (?,?,?,?)", (name, code, leer, max))
+    conn.commit()
+    conn.close()
 
-def set_Abflugzeit(row: int, zeit:datetime)->bool:
-     pass
-     
-def set_gate(row: int, gate:str)->bool:
-     pass
 
-def set_status(row: int, status:str)->bool:
-     pass
+def add_anbieter(name, code):
+    conn = sqlite3.connect(dbFile)
+    cur = conn.cursor()
+    cur.execute("INSERT INTO anbieter VALUES (?,?)", (name, code))
+    conn.commit()
+    conn.close()
 
-def set_all(rows: dict)->bool:     
-     for row in rows:
-          set_Ankuftzeit(row, row["ankuftzeit"])
-          set_Abflugzeit(row, row["abflugzeit"])
-          set_gate(row, row["gate"])
-          set_status(row,row["status"])
-     return True
 
-def get_Ankuftzeit(row: int)->datetime:
-     pass
+def add_ziel(name, code):
+    conn = sqlite3.connect(dbFile)
+    cur = conn.cursor()
+    cur.execute("INSERT INTO ziele VALUES (?,?)", (name, code))
+    conn.commit()
+    conn.close()
 
-def get_Abflugzeit(row: int)->datetime:
-     pass
-     
-def get_gate(row: int)->str:
-     pass
 
-def get_status(row: int)->str:
-     pass
+def set_Ankuftzeit(row: int, zeit: datetime) -> bool:
+    pass
 
-def get_all()->dict:
-     result = {}
-     rows = 0 ##### Todo: die einzahl der rows setzen
-     for row in rows:
-          get_Ankuftzeit(row), get_Abflugzeit(row),get_gate(row),get_status(row)
-     return result
+
+def set_Abflugzeit(row: int, zeit: datetime) -> bool:
+    pass
+
+
+def set_gate(row: int, gate: str) -> bool:
+    pass
+
+
+def set_status(row: int, status: str) -> bool:
+    pass
+
+
+def set_all(rows: dict) -> bool:
+    for row in rows:
+        set_Ankuftzeit(row, row["ankuftzeit"])
+        set_Abflugzeit(row, row["abflugzeit"])
+        set_gate(row, row["gate"])
+        set_status(row, row["status"])
+    return True
+
+
+def get_ankuftzeit(row: int) -> datetime:
+    pass
+
+
+def get_abflugzeit(row: int) -> datetime:
+    pass
+
+
+def get_gate(row: int) -> str:
+    pass
+
+
+def get_status(row: int) -> str:
+    pass
+
+
+def get_all() -> dict:
+    result = {}
+    rows = 0  ##### Todo: die einzahl der rows setzen
+    for row in rows:
+        get_ankuftzeit(row), get_abflugzeit(row), get_gate(row), get_status(row)
+    return result

@@ -7,6 +7,7 @@ import util
 from Flugzeug import Flugzeug
 import datenbank_funktionen
 
+
 def render_page(content_name, text=None):
     """
     Rendert eine HTML-Seite basierend auf Vorlagen und Inhalten.
@@ -97,8 +98,8 @@ def main():
     @app.route("/")
     def home():
         data = util.get_all()
-        
-        #data = datenbank_funktionen.get_all() # Wenn sql implementiert
+
+        # data = datenbank_funktionen.get_all() # Wenn sql implementiert
 
         sorted_data = dict(
             sorted(data.items(), key=lambda item: item[1]["flugdaten"]["abflugzeit"])
