@@ -41,7 +41,7 @@ class Flugzeug(Fahrzeug):
         self.flugnummer = random.randint(100000, 999999)
         self.abflugzeit = abflugzeit
         self.ankunftzeit = ankunftzeit
-        self.fluggesellschaft = self.get_Fluggesellschaft()
+        self.fluggesellschaft = ""
 
     def load_json(self, name):
         """
@@ -62,26 +62,3 @@ class Flugzeug(Fahrzeug):
             with open(f"/data/{name}.json", "r", encoding="utf8") as f:
                 return json.loads(f.read())
 
-    def get_Fluggesellschaft(self):
-        Fluggesellschaften = [
-            "SkyLink Airways",
-            "Horizon Wings",
-            "CelestialJet",
-            "AeroVista Airlines",
-            "StarLift Air",
-            "CloudSail Airlines",
-            "BlueSky Express",
-            "SolarWings International",
-            "VelocityAir",
-            "NovaJet Airways",
-        ]
-        return random.choice(Fluggesellschaften)
-
-    def __str__(self):
-        """
-        Gibt eine formatierte Zeichenkette mit Informationen über das Flugzeug zurück.
-
-        Returns:
-            str: Eine formatierte Zeichenkette mit dem Namen, der Geschwindigkeit, der Anzahl der Passagiere, dem Gewicht und der maximalen Flughöhe.
-        """
-        return f"{super().__str__()} " f"max Flughöhe(m): {self.maxFlughoehe}"

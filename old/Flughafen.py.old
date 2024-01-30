@@ -78,3 +78,13 @@ class Flughafen(Gebaeude):
         return result
 
         
+        def __str__(self):
+            """
+            Gibt eine formatierte Zeichenkette mit Informationen über das Flugzeug zurück.
+
+            Returns:
+                str: Eine formatierte Zeichenkette mit dem Namen, der Geschwindigkeit, der Anzahl der Passagiere, dem Gewicht und der maximalen Flughöhe.
+            """
+            return f"{super().__str__()} " f"max Flughöhe(m): {self.maxFlughoehe}"
+
+        

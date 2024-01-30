@@ -39,7 +39,7 @@ class Fahrzeug(ABC):
             print(f"Fahrzeug {_name} nicht in der Datenbank")
 
     @abstractmethod
-    def load_json(name):
+    def load_json(self, name):
         pass
 
     def __str__(self):

@@ -3,7 +3,7 @@ import os
 import json
 import random
 from datetime import datetime, timedelta
-
+import imp
 
 def get_data_folder():
     """
@@ -12,12 +12,21 @@ def get_data_folder():
     Returns:
         str: Der Pfad zum Datenordner.
     """
+    data_folder_path = ""
     if getattr(sys, "frozen", False):
         data_folder_path = sys._MEIPASS
-    else:
+    
+    if not os.path.exists(data_folder_path):
+        data_folder_path = f"{__name__}../../"
+        
+    if not os.path.exists(data_folder_path):
         data_folder_path = os.path.dirname(
             os.path.abspath(sys.modules["__main__"].__file__)
-        )
+        )        
+    if not os.path.exists(data_folder_path):
+        data_folder_path = "../../"
+        
+    print(data_folder_path)
     return data_folder_path
 
 
@@ -56,14 +65,20 @@ def get_rnd_fluggesellschaft():
     Returns:
     tuple: Ein Tupel bestehend aus dem Namen der Fluggesellschaft und einer zufälligen Kennung.
     """
-    with open(f"{get_data_folder()}/data/randomData.json", "r", encoding="utf8") as f:
-        data = json.loads(f.read())
-        fluggesellschaft = random.choice(data["fluggesellschaften"])
+    try:
+        with open(f"{get_data_folder()}/data/randomData.json", "r", encoding="utf8") as f:
+            data = json.loads(f.read())
+            fluggesellschaft = random.choice(data["fluggesellschaften"])
+            return (
+                fluggesellschaft["name"],
+                f"{fluggesellschaft['kennung']}{random.randint(1000, 9999)}",
+            )
+    except FileNotFoundError:
+        fluggesellschaft = {"name": "Fluggesellschaft", "kennung": "FLG"}
         return (
             fluggesellschaft["name"],
             f"{fluggesellschaft['kennung']}{random.randint(1000, 9999)}",
         )
-
 
 def get_rnd_ziel():
     """
@@ -102,6 +117,12 @@ def get_rnd_Status():
 
 
 def get_all():
+    """
+    Generiert zufällige Flugdaten für eine Liste von Flügen.
+
+    Returns:
+    dict: Ein Dictionary mit zufälligen Flugdaten.
+    """
     data = {}
     for _ in range(random.randint(10, 15)):
         fluggessellschaft, flugnummer = get_rnd_fluggesellschaft()
