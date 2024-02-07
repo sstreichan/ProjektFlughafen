@@ -25,9 +25,6 @@ self.pos = random.choice(Flughafen.parkpos)
 
         Parameter:
             wert (int): Die Anzahl der Passagiere, die hinzugefügt werden sollen.
-
-        Raises:
-            Exception (Ausnahme): Wenn die maximale Anzahl der Fluggäste überschritten wird.
         """
         if (
             self.passagiere + wert < self.passagiere_max

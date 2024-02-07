@@ -4,12 +4,24 @@ main module
 from web_renderer import web_renderer
 
 import datenbank_funktionen
+import os
 
-
+debug = True
+    
 def main():
-    app = web_renderer()    
-    app.run()
+    try:  
+        app = web_renderer()
+        app.run()
+    except KeyboardInterrupt:
+        print("Programm wird beendet...")
+        import sys
+        sys.exit()
+    except Exception as e:
+        print(f"Der follgende Fehler ist aufgetreten: {e}")
+        import sys
+        sys.exit()
 
 
 if __name__ == "__main__":
     main()
+    

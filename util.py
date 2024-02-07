@@ -22,11 +22,10 @@ def get_data_folder():
     if not os.path.exists(data_folder_path):
         data_folder_path = os.path.dirname(
             os.path.abspath(sys.modules["__main__"].__file__)
-        )        
+        )       
     if not os.path.exists(data_folder_path):
-        data_folder_path = "../../"
-        
-    print(data_folder_path)
+        data_folder_path = os.getcwd()
+
     return data_folder_path
 
 
@@ -116,7 +115,7 @@ def get_rnd_Status():
     )
 
 
-def get_all():
+def get_all(rnd=True):
     """
     Generiert zufällige Flugdaten für eine Liste von Flügen.
 
@@ -124,10 +123,36 @@ def get_all():
     dict: Ein Dictionary mit zufälligen Flugdaten.
     """
     data = {}
-    for _ in range(random.randint(10, 15)):
+    if not rnd:
+        data["PAC1855"] = {
+            "flugdaten": {
+                "timestamp" : 0,
+                "abflugzeit": datetime.strptime("01.01.2022 16:07:00", "%d.%m.%Y %H:%M:%S"),
+                "ankunftzeit": datetime.strptime("01.01.2022 19:33:00", "%d.%m.%Y %H:%M:%S"),
+                "fluggesellschaft": "PacificAir",
+                "gate": "Gate 6",
+                "status": "Normal",
+                "ziel": "Berlin"
+            }
+        }
+        data["BSA1605"] = {
+            "flugdaten": {
+                "timestamp" : 0,
+                "abflugzeit": datetime.strptime("01.01.2022 12:00:00", "%d.%m.%Y %H:%M:%S"),
+                "ankunftzeit": datetime.strptime("01.01.2022 14:00:00", "%d.%m.%Y %H:%M:%S"),
+                "fluggesellschaft": "BlueSky Airlines",
+                "gate": "Gate 1",
+                "status": "Fällt aus",
+                "ziel": "Cairo"
+            }
+        }
+        return data
+        
+    for _ in range(random.randint(3, 15)):
         fluggessellschaft, flugnummer = get_rnd_fluggesellschaft()
         data[f"{flugnummer}"] = {
             "flugdaten": {
+                "timestamp" : 0,
                 "abflugzeit": get_rnd_datetime(),
                 "ankunftzeit": get_rnd_datetime(),
                 "fluggesellschaft": fluggessellschaft,

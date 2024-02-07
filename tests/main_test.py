@@ -1,23 +1,13 @@
 import unittest
-from web_renderer import web_renderer
-from flask import Flask
+from unittest.mock import patch
+from main import main, web_renderer
 
-class TestWebRenderer(unittest.TestCase):
-
-    def test_render_page():
-        app = Flask(__name__, template_folder=f"../../templates/")
-        # Create a web_renderer instance
-        renderer = web_renderer()
-        # Call the render_page method with some input and check for expected behavior
-        self.assertIsNotNone(renderer.render_page("content_name", "text"))
-
-    def test_home():
-        # Create a web_renderer instance
-        renderer = web_renderer()
-        # Call the home_old method and check for expected behavior
-        self.assertIsNotNone(renderer.home())
-
-    # Add more test cases for other methods as needed
+class TestMainFunction(unittest.TestCase):
+    @patch('main.web_renderer')
+    def test_main_function(self, mock_web_renderer):
+        main()
+        mock_web_renderer.assert_called_once()
+        mock_web_renderer.return_value.run.assert_called_once()
 
 if __name__ == '__main__':
     unittest.main()

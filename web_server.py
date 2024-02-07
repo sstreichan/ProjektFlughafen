@@ -3,7 +3,7 @@ from datetime import datetime
 import os
 import json
 from abc import ABC, abstractmethod
-from flask import Flask
+from flask import Flask, request
 import threading
 from time import sleep
 import webbrowser
@@ -48,7 +48,7 @@ class web_server(ABC):
         """
         pass
 
-    @abstractmethod
+    
     def home():
         """
         Abstrakte Methode für die Startseite des Webservers.
@@ -57,6 +57,23 @@ class web_server(ABC):
         NotImplementedError: Wenn die Methode in der abgeleiteten Klasse nicht implementiert ist.
         """
         pass
+    
+    def abflug(self):
+        """
+        Abstrakte Methode für die Abflüge.
 
+        Raises:
+        NotImplementedError: Wenn die Methode in der abgeleiteten Klasse nicht implementiert ist.
+        """
+        pass
+
+    def ankuft(self):
+        """
+        Abstrakte Methode für die Anküfte.
+
+        Raises:
+        NotImplementedError: Wenn die Methode in der abgeleiteten Klasse nicht implementiert ist.
+        """
+        pass
 
 
