@@ -3,13 +3,14 @@ main module
 """
 from web_renderer import web_renderer
 
-import datenbank_funktionen
+from Database import Database
 import os
 
 debug = True
-    
+
+
 def main():
-    try:  
+    try:
         app = web_renderer()
         app.run()
     except KeyboardInterrupt:

@@ -3,8 +3,9 @@ import os
 from flask import Flask, render_template, request
 import util
 from Database import Database
+import inspect
 
-class web_renderer(web_server):   
+class web_renderer(web_server):
     """
     Klasse für die Renderung von Webseiten basierend auf Vorlagen und Inhalten.
 
@@ -12,17 +13,17 @@ class web_renderer(web_server):
     app (Flask): Die Flask-App für den Webrenderer.
     """
     app = None
+    global db
     def __init__(self):
         """
         Initialisiert eine Instanz der Webrenderer-Klasse.
         Setzt die Flask-App auf die des zugrunde liegenden Web-Servers.
         """
         super().__init__()
-        #with Database() as db:
-        db = Database()
-        db.delete_all_entries()
-        db.set_entries("Ankunft", util.get_all(False))
-        db.set_entries("Abflug", util.get_all(False))
+        with Database() as db:
+            db.delete_all_entries()
+            db.set_entries("Ankunft", util.get_all(True))
+            db.set_entries("Abflug", util.get_all(True))
         app = web_server.app
         
     def render_page(self, content_name, text=None):
@@ -36,7 +37,6 @@ class web_renderer(web_server):
         Returns:
             str: Der gerenderte HTML-Code für die Seite.
         """
-        print(f"folder: {util.get_data_folder()}")
         with open(
             f"{util.get_data_folder()}/templates/index.html", "r", encoding="utf8"
         ) as f:
@@ -63,11 +63,12 @@ class web_renderer(web_server):
 
         if text is not None:
             result = result.replace("$text$", text)
-
+        db = Database()
+        datenstand = str(db.get_datetime())
         with open(
             f"{util.get_data_folder()}/templates/foot.html", "r", encoding="utf8"
         ) as f:
-            result = result.replace("$foot$", f.read().replace("$datenstand$", util.get_datenstand()))
+            result = result.replace("$foot$", f.read().replace("$datenstand$", datenstand))
 
         return result
     
@@ -89,22 +90,19 @@ class web_renderer(web_server):
     
     @web_server.app.route("/ankunft")
     def ankunft(dataOnly=False):
-        #data = util.get_all(True)
         db = Database()
-        print(db.check_entries("Ankunft"))
-        if db.check_entries("Ankunft") is True:
-            db.delete_entries("Ankunft")
-            db.set_entries("Ankunft", util.get_all(True))
+        if db.check_entries(inspect.stack()[0][3]) is True:
+            db.delete_entries(inspect.stack()[0][3])
+            db.set_entries(inspect.stack()[0][3], util.get_all(True))
     
-        data = db.get_entries("Ankunft")
-        print(data)
-        
+        data = db.get_entries(inspect.stack()[0][3])
+                
         sorted_data = dict(
             sorted(data.items(), key=lambda item: item[1]["flugdaten"]["abflugzeit"])
         )
         search_param = request.args.get("s")
         
-        if search_param != None:
+        if search_param is not None:
             search_param = search_param.lower()
             filterred_data = dict()            
             for flugnummer, flugdaten in sorted_data.items():
@@ -128,7 +126,13 @@ class web_renderer(web_server):
     
     @web_server.app.route("/abflug")
     def abflug(dataOnly=False):
-        data = util.get_all()
+        #data = util.get_all()
+        db = Database()
+        if db.check_entries(inspect.stack()[0][3]) is True:
+            db.delete_entries(inspect.stack()[0][3])
+            db.set_entries(inspect.stack()[0][3], util.get_all(True))
+    
+        data = db.get_entries(inspect.stack()[0][3])
 
         sorted_data = dict(
             sorted(data.items(), key=lambda item: item[1]["flugdaten"]["abflugzeit"])

@@ -1,13 +1,21 @@
 import sqlite3
 from datetime import datetime, timedelta
 import util
+import random
+
 
 class Database:
     def __init__(self, db_name='fluge.db'):
         self.tables = ["Ankunft", "Abflug"]
         self.db_name = db_name
         self.create_all_tables()
+        
+    def __enter__(self):
+        return self
 
+    def __exit__(self, type, value, traceback):
+        pass
+    
     def create_all_tables(self):
         for table in self.tables:
             self.create_table(table)
@@ -25,7 +33,7 @@ class Database:
             for flight_code, flight_data in data.items():
                 cursor.execute(f"INSERT INTO {table} VALUES (?, ?, ?, ?, ?, ?, ?, ?)", (
                     flight_code,
-                    datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+                    datetime.now().strftime("%H:%M:%S %d.%m.%Y"),
                     flight_data["flugdaten"]["abflugzeit"].strftime("%Y-%m-%d %H:%M:%S"),
                     flight_data["flugdaten"]["ankunftzeit"].strftime("%Y-%m-%d %H:%M:%S"),
                     flight_data["flugdaten"]["fluggesellschaft"],
@@ -73,18 +81,19 @@ class Database:
             cursor.execute(f"SELECT * FROM {table}")
             rows = cursor.fetchall()
             for row in rows:
-                timestamp = datetime.strptime(row[1], "%Y-%m-%d %H:%M:%S")
-                if current_time - timestamp > timedelta(minutes=1):
+                timestamp = datetime.strptime(row[1], "%H:%M:%S %d.%m.%Y")
+                if current_time - timestamp > timedelta(minutes=1) and random.randint(0, 2) >0:
                     return True
             return False
 
-    def get_timestamp(self, table):
-        current_time = datetime.now()
+    def get_datetime(self, table=None):
+        if table is None:
+            for table_tmp in self.tables:
+                table = table_tmp
         with sqlite3.connect(self.db_name) as conn:
             cursor = conn.cursor()
             cursor.execute(f"SELECT timestamp FROM {table}")
-            row = cursor.fetchall()[0]
-            return datetime.strptime(row[1], "%Y-%m-%d %H:%M:%S")
+            return cursor.fetchone()[0]
         
     def delete_all_entries(self):
         for table in self.tables:
@@ -94,5 +103,4 @@ class Database:
         with sqlite3.connect(self.db_name) as conn:
             cursor = conn.cursor()
             cursor.execute(f"DELETE FROM {table}")
-
 
