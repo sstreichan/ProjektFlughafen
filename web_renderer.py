@@ -74,6 +74,18 @@ class web_renderer(web_server):
     
     @staticmethod
     def filter_data(data, param, filterred_data = {}, cnt =0 ):
+        """
+        Filtert Daten basierend auf einem Parameter und gibt die gefilterten Daten zurück.
+
+        Args:
+            data (dict): Ein Dictionary von Flugdaten.
+            param (str): Der Parameter, nach dem gefiltert werden soll.
+            filtered_data (dict, optional): Ein optionales Dictionary für die gefilterten Daten (default ist ein leeres Dictionary).
+            cnt (int, optional): Ein Zähler für die Rekursion (default ist 0).
+
+        Returns:
+            dict: Ein Dictionary mit den gefilterten Flugdaten.
+        """
         if cnt == len(data):
             return filterred_data
         for flugnummer, flugdaten in data.items():
@@ -90,42 +102,64 @@ class web_renderer(web_server):
     
     @web_server.app.route("/ankunft")
     def ankunft(dataOnly=False):
+        """
+        Handler für die Ankunftsseite.
+
+        Args:
+            dataOnly (bool, optional): Ein Flag, das angibt, ob nur die Daten zurückgegeben werden sollen (default ist False).
+
+        Returns:
+            str: Die gerenderte HTML-Seite oder die Daten als JSON, abhängig vom dataOnly-Flag.
+        """
         db = Database()
         if db.check_entries(inspect.stack()[0][3]) is True:
             db.delete_entries(inspect.stack()[0][3])
             db.set_entries(inspect.stack()[0][3], util.get_all(True))
-    
+
         data = db.get_entries(inspect.stack()[0][3])
-                
+
         sorted_data = dict(
             sorted(data.items(), key=lambda item: item[1]["flugdaten"]["abflugzeit"])
         )
         search_param = request.args.get("s")
-        
+
         if search_param is not None:
             search_param = search_param.lower()
-            filterred_data = dict()            
+            filtered_data = dict()
             for flugnummer, flugdaten in sorted_data.items():
                 if flugnummer.lower() == search_param:
-                    filterred_data.update({flugnummer: flugdaten})
+                    filtered_data.update({flugnummer: flugdaten})
                     continue
                 for key in flugdaten["flugdaten"].keys():
-                    try: #evtl try durch if ersetzen
+                    try:
                         if flugdaten["flugdaten"][key].lower() == search_param:
-                            filterred_data.update({flugnummer: flugdaten})
+                            filtered_data.update({flugnummer: flugdaten})
                     except AttributeError:
                         pass
-            
-            if len(filterred_data) == 0: result = "Kein passender Flug gefunden"
-            else: result = render_template("Flugplan.html", data=filterred_data, view="Ankünfte 🛬")
-        else: result = render_template("Flugplan.html", data=sorted_data, view="Ankünfte 🛬")
-        if dataOnly:
+
+            if len(filtered_data) == 0:
+                result = "Kein passender Flug gefunden"
+            else:
+                result = render_template("Flugplan.html", data=filtered_data, view="Ankünfte 🛬")
+        else:
+            result = render_template("Flugplan.html", data=sorted_data, view="Ankünfte 🛬")
+
+        if dataOnly is True:
             return result
         return web_renderer.render_page(None, result)
-        
+
     
     @web_server.app.route("/abflug")
     def abflug(dataOnly=False):
+        """
+        Handler für die Abflugseite.
+
+        Args:
+            dataOnly (bool, optional): Ein Flag, das angibt, ob nur die Daten zurückgegeben werden sollen (default ist False).
+
+        Returns:
+            str: Die gerenderte HTML-Seite oder die Daten als JSON, abhängig vom dataOnly-Flag.
+        """
         #data = util.get_all()
         db = Database()
         if db.check_entries(inspect.stack()[0][3]) is True:

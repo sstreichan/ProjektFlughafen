@@ -2,8 +2,8 @@ import sys
 import os
 import json
 import random
-from datetime import datetime, timedelta
-import imp
+from datetime import datetime
+
 
 def get_data_folder():
     """
@@ -12,19 +12,18 @@ def get_data_folder():
     Returns:
         str: Der Pfad zum Datenordner.
     """
+    return os.path.dirname(os.path.realpath(__file__))
+
     data_folder_path = ""
     if getattr(sys, "frozen", False):
         data_folder_path = sys._MEIPASS
-    
-    if not os.path.exists(data_folder_path):
-        data_folder_path = f"{__name__}../../"
         
     if not os.path.exists(data_folder_path):
-        data_folder_path = os.path.dirname(
-            os.path.abspath(sys.modules["__main__"].__file__)
-        )       
+        data_folder_path =  os.path.dirname(os.path.realpath(__file__))
+    
     if not os.path.exists(data_folder_path):
         data_folder_path = os.getcwd()
+
 
     return data_folder_path
 
