@@ -32,7 +32,9 @@ class web_server(ABC):
         Startet den Webserver und öffnet den Standardwebbrowser auf der entsprechenden Adresse.
         """
         webbrowser.open(f"http://localhost:{self.port}")
-        web_server.app.run(port=self.port, debug=False)
+        from waitress import serve
+        serve(web_server.app, port=self.port)
+        #web_server.app.run(port=self.port, debug=False)
 
     @abstractmethod
     def render_page(content_name, text=None):

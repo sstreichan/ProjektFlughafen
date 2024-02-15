@@ -11,6 +11,7 @@ debug = True
 
 def main():
     try:
+        print("Starting webserver.")
         app = web_renderer()
         app.run()
     except KeyboardInterrupt:
