@@ -1,4 +1,4 @@
-![screenshot](https://raw.githubusercontent.com/sstreichan/ProjektFlughafen/main/#Docs/Screenshot.png)
+![screenshot](https://raw.githubusercontent.com/sstreichan/ProjektFlughafen/main/%23Docs/Screenshot.png)
 
 ![packages](https://raw.githubusercontent.com/sstreichan/ProjektFlughafen/main/%23Docs/packages.jpg)
 
