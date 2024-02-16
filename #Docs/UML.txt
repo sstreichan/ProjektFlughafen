@@ -1,0 +1,61 @@
+                                                                                                                                            ,-----------------------------------.
+                                                                                                                                            |util                               |
+                                                                                                                                            |-----------------------------------|
+                                                                                                                       ,----------------.   |+ get_data_folder(): str           |
+                                                                                                                       |main_module     |   |+ get_rnd_datetime(): datetime     |
+                                                                                                                       |----------------|   |+ get_rnd_time(): str              |
+                                                                                                                       |- debug: Boolean|   |+ get_rnd_fluggesellschaft(): tuple|
+                                                                                                                       |                |   |+ get_rnd_ziel(): str              |
+                                                                                                                       |+ main(): void  |   |+ get_rnd_gate(): str              |
+                                                                                                                       `----------------'   |+ get_rnd_Status(): str            |
+                                                                                                                                            |+ get_all(rnd: bool = True): dict  |
+                                                                                                                                            `-----------------------------------'
+                                                                                                                                                              |                  
+                                                                                                                                                              |                  
+                      ,------------------------------------------------------------------------------------.                                                  |                  
+                      |web_renderer                                                                        |                                                  |                  
+                      |------------------------------------------------------------------------------------|                                                  |                  
+                      |- app: Flask                                                                        |                                                  |                  
+                      |- db: Database                                                                      |                                                  |                  
+                      |                                                                                    |                            ,--.     ,----.  ,--------.   ,------.   
+                      |+ __init__()                                                                        |                            |os|     |json|  |datetime|   |random|   
+                      |+ render_page(content_name: str, text: str = None): str                             |                            |--|     |----|  |--------|   |------|   
+                      |+ filter_data(data: dict, param: str, filterred_data: dict = {}, cnt: int = 0): dict|                            `--'     `----'  `--------'   `------'   
+                      |+ ankunft(dataOnly: bool = False): str                                              |                                                                     
+                      |+ abflug(dataOnly: bool = False): str                                               |                                                                     
+                      |+ erweitert(): str                                                                  |                                                                     
+                      |+ home(): str                                                                       |                                                                     
+                      `------------------------------------------------------------------------------------'                                                                     
+                                                                 |                                                                                                               
+          |     | ,---------------------------------------------------------------------------------------------. |                                                              
+          |     | |web_server                                                                                   | |                                                              
+          |     | |---------------------------------------------------------------------------------------------| |                                                              
+          |     | |- app: Flask                                                                                 | |                                                              
+          |     | |- port: int = 8080                                                                           | |                                                              
+          |     | |                                                                                             | |                                                              
+          |     | |+ __init__()                                                                                 | |                                                              
+          |     | |+ run(): void                                                                                | |                                                              
+          |     | |{abstract} + render_page(content_name: str, text: str = None): void                          | |                                                              
+          |     | |{abstract} + home(): void                                                                    | |                                                              
+          |     | |{abstract} + abflug(dataOnly: bool = False): str                                             | |                                                              
+          |     | |{abstract} + ankunft(dataOnly: bool = False): str                                            | |                                                              
+          |     | |{abstract} + erweitert(): str                                                                | |                                                              
+          |     | |{static} + filter_data(data: dict, param: str, filterred_data: dict = {}, cnt: int = 0): dict| |                                                              
+          |     | `---------------------------------------------------------------------------------------------' |                                                              
+                                                                                                                                                                                 
+                                                                                                                                                                                 
+                                                                                                     ,-------------------------------------------.                               
+                                                                                                     |Database                                   |                               
+                                                                                                     |-------------------------------------------|                               
+                                                                                                     |+ __enter__(): Database                    |                               
+                                                                                                     |+ __exit__(type, value, traceback)         |                               
+   ,---------------.                ,-------.         ,-------.      ,-----.                         |+ create_all_tables(): void                |                               
+   |render_template|                |request|         |inspect|      |Flask|                         |+ create_table(table: str): void           |                               
+   |---------------|                |-------|         |-------|      |-----|                         |+ set_entries(table: str, data: dict): void|                               
+   `---------------'                `-------'         `-------'      `-----'                         |+ get_entries(table: str): dict            |                               
+                                                                                                     |+ check_all_entries(): void                |                               
+                                                                                                     |+ check_entries(table: str): bool          |                               
+                                                                                                     |+ get_datetime(table: str = None): str     |                               
+                                                                                                     |+ delete_all_entries(): void               |                               
+                                                                                                     |+ delete_entries(table: str): void         |                               
+                                                                                                     `-------------------------------------------'                               

@@ -1,0 +1,107 @@
+@startuml
+
+class main_module {
+  - debug: Boolean
+
+  + main(): void
+}
+
+main_module --|> web_renderer
+main_module --|> Database
+main_module --|> os
+
+class web_server {
+  - app: Flask
+  - port: int = 8080
+
+  + __init__()
+  + run(): void
+  {abstract} + render_page(content_name: str, text: str = None): void
+  {abstract} + home(): void
+  {abstract} + abflug(dataOnly: bool = False): str
+  {abstract} + ankunft(dataOnly: bool = False): str
+  {abstract} + erweitert(): str
+  {static} + filter_data(data: dict, param: str, filterred_data: dict = {}, cnt: int = 0): dict
+}
+
+class util {
+  + get_data_folder(): str
+  + get_rnd_datetime(): datetime
+  + get_rnd_time(): str
+  + get_rnd_fluggesellschaft(): tuple
+  + get_rnd_ziel(): str
+  + get_rnd_gate(): str
+  + get_rnd_Status(): str
+  + get_all(rnd: bool = True): dict
+}
+
+class Database {
+  + __enter__(): Database
+  + __exit__(type, value, traceback)
+  + create_all_tables(): void
+  + create_table(table: str): void
+  + set_entries(table: str, data: dict): void
+  + get_entries(table: str): dict
+  + check_all_entries(): void
+  + check_entries(table: str): bool
+  + get_datetime(table: str = None): str
+  + delete_all_entries(): void
+  + delete_entries(table: str): void
+}
+
+class os {
+}
+
+class json {
+}
+
+class datetime {
+}
+
+class random {
+}
+
+class Flask {
+}
+
+class render_template {
+}
+
+class request {
+}
+
+class inspect {
+}
+
+class web_renderer {
+  - app: Flask
+  - db: Database
+
+  + __init__()
+  + render_page(content_name: str, text: str = None): str
+  + filter_data(data: dict, param: str, filterred_data: dict = {}, cnt: int = 0): dict
+  + ankunft(dataOnly: bool = False): str
+  + abflug(dataOnly: bool = False): str
+  + erweitert(): str
+  + home(): str
+}
+
+web_server --|> Database
+web_server --|> Flask
+web_server --|> render_template
+web_server --|> request
+web_server --|> inspect
+
+util --|> os
+util --|> json
+util --|> datetime
+util --|> random
+
+web_renderer --|> web_server
+web_renderer --|> Database
+web_renderer --|> Flask
+web_renderer --|> render_template
+web_renderer --|> request
+web_renderer --|> inspect
+
+@enduml
